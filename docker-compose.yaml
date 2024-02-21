@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+#  app:
+#    build:
+#      context: .
+#    container_name: auth_api
+#    restart: always
+#    command: >
+#        sh -c "python cli.py auth --manager uvicorn --host 0.0.0.0 --port 5001 --workers 4"
+#    env_file:
+#      - .env
+#    ports:
+#      - "5001:5001"
+#    depends_on:
+#      - postgresdb
+
+  postgresdb:
+    image: postgres:latest
+    hostname: db
+    container_name: auth_postgresdb
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dockerfiles/postgresql/data:/var/lib/postgresql/data
+    restart: on-failure
