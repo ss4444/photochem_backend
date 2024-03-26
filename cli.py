@@ -25,7 +25,7 @@ def dummy_command():
 def api(
     manager: ProcessManager = ProcessManager.uvicorn,
     port: int = 8000,
-    host: str = "192.168.1.80",
+    host: str = "10.0.0.17",
     workers: int = 1,
 ):
     if platform.system() == "Windows" or manager == ProcessManager.uvicorn:
