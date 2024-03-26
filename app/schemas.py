@@ -21,6 +21,14 @@ class UserAllInfo(BaseSchema):
     is_admin: bool
 
 
+class UserReg(BaseSchema):
+    last_name: str
+    name: str
+    username: str
+    password: str
+    secret_code: str
+
+
 class UserAuth(BaseSchema):
     username: str
     password: str
@@ -48,11 +56,21 @@ class CheckAnswer(BaseSchema):
 
 
 class AllSubstance(BaseSchema):
+    mol_formula: str
+    smiles: str
+    name: str
+    quantity: str
+    office: str
+    wardrobe: str
+    shelf: str
+    manufacturer: str
+    purity: str
+
+
+class AdminPred(BaseSchema):
     smiles: str
     name: str
     mol_formula: str
-    quantity: str
-    location: str
 
 
 class EditSubstance(BaseSchema):
@@ -66,14 +84,23 @@ class EditSubstance(BaseSchema):
 class SmilesSubstance(BaseSchema):
     smiles: str
 
+class MolInfoItem(BaseSchema):
+    last_name: str
+    admin_name: str
+    quantity: str
+    office: str
+    wardrobe: str
+    shelf: str
+    manufacturer: str
+    purity: str
+
 
 class MolInfo(BaseSchema):
     smiles: str
     mol_formula: str
     mol_weight: str
     name: str
-    quantity: Optional[str]
-    location: Optional[str]
+    owners: Optional[list]
 
 
 class HistoryItem(BaseSchema):
@@ -87,3 +114,7 @@ class HistoryItem(BaseSchema):
 
 class History(BaseSchema):
     history: List[HistoryItem]
+
+
+class GetInfoItem(BaseSchema):
+    owner: list

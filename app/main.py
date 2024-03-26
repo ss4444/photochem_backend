@@ -32,9 +32,10 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup() -> None:
-    database_= app.state.database
+    database_ = app.state.database
     if not database_.is_connected:
         await database.connect()
+
 
 @app.on_event("shutdown")
 async def shutdown() -> None:

@@ -24,7 +24,8 @@ target_metadata = metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-config.set_main_option('sqlalchemy.url', postgres_dsn)
+config.set_main_option("sqlalchemy.url", postgres_dsn)
+
 
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
@@ -44,7 +45,7 @@ def run_migrations_offline():
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
-        user_module_prefix='sa.'
+        user_module_prefix="sa.",
     )
 
     with context.begin_transaction():
@@ -66,7 +67,9 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata, user_module_prefix='sa.'
+            connection=connection,
+            target_metadata=target_metadata,
+            user_module_prefix="sa.",
         )
 
         with context.begin_transaction():

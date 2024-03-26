@@ -9,8 +9,8 @@ from uuid import UUID
 from app.settings import settings
 
 
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 async def authenticate_user(username: str, password: str):
     try:
@@ -24,10 +24,8 @@ async def authenticate_user(username: str, password: str):
 
 async def get_user_current(token: str = Depends(oauth2_scheme)):
     # try:
-    payload = jwt.decode(token, settings.secret_key, algorithms=['HS256'])
-    user = await User.objects.get(id=UUID(payload['id']))
+    payload = jwt.decode(token, settings.secret_key, algorithms=["HS256"])
+    user = await User.objects.get(id=UUID(payload["id"]))
     # except:
     #     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid username or password')
     return user
-
-

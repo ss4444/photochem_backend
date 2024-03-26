@@ -29,11 +29,18 @@ class Substance(ormar.Model):
         pass
 
     id: UUID = ormar.UUID(primary_key=True, default=uuid4)
-    smiles: str = ormar.String(max_length=1000, nullable=False, unique=True)
+    user_id: UUID = ormar.UUID()
+    last_name: str = ormar.String(max_length=100, nullable=False)
+    admin_name: str = ormar.String(max_length=100, nullable=False)
     mol_formula: str = ormar.String(max_length=100, nullable=False)
+    smiles: str = ormar.String(max_length=1000, nullable=False)
     name: str = ormar.String(max_length=1000, nullable=False)
     quantity: str = ormar.String(max_length=100, nullable=True)
-    location: str = ormar.String(max_length=100, nullable=True)
+    office: str = ormar.String(max_length=100, nullable=True)
+    wardrobe: str = ormar.String(max_length=100, nullable=True)
+    shelf: str = ormar.String(max_length=100, nullable=True)
+    manufacturer: str = ormar.String(max_length=100, nullable=True)
+    purity: str = ormar.String(max_length=100, nullable=True)
     created_at: datetime.datetime = ormar.DateTime(default=datetime.datetime.utcnow)
 
 
@@ -45,6 +52,6 @@ class Request(ormar.Model):
     user_id: UUID = ormar.UUID()
     mol_formula: str = ormar.String(max_length=1000, nullable=False)
     name: str = ormar.String(max_length=100, nullable=False)
-    mol_weight: float = ormar.Float( nullable=False)
+    mol_weight: float = ormar.Float(nullable=False)
     smiles: str = ormar.String(max_length=100, nullable=False)
     created_at: datetime.datetime = ormar.DateTime(default=datetime.datetime.utcnow)

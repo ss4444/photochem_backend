@@ -1,4 +1,3 @@
-
 from enum import Enum
 from pathlib import Path
 import platform
@@ -8,7 +7,6 @@ import time
 from alembic import command
 from alembic.config import Config
 import typer as typer
-
 
 app = typer.Typer()
 
@@ -22,11 +20,12 @@ class ProcessManager(str, Enum):
 def dummy_command():
     pass
 
+
 @app.command()
 def api(
     manager: ProcessManager = ProcessManager.uvicorn,
     port: int = 8000,
-    host: str = "127.0.0.1",
+    host: str = "192.168.1.80",
     workers: int = 1,
 ):
     if platform.system() == "Windows" or manager == ProcessManager.uvicorn:
